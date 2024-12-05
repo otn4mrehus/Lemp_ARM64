@@ -12,8 +12,8 @@ Lightweight Web Server (Linux, Nginx, MySQL, dan PHP) with Docker
 INSTALLATION
 ```
 apt install git
-git clone https://github.com/otn4mrehus/Lemp_ARM64.git
-cd Lemp_ARM64
+git clone (https://github.com/otn4mrehus/Lighweight-Web-Server.git
+cd Lighweight-Web-Server
 chmod +x switch-php.sh
 ./switch-php.sh
 ````
