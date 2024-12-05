@@ -8,6 +8,9 @@ Lightweight Web Server (Linux, Nginx, MySQL, dan PHP) with Docker
   2. Nginx (Alpine OS)
   3. MySQL 8.0
   4. PHPMyAdmin
+  5. Optional requirement
+     - Docker
+     - Docker Compose
 
 INSTALLATION
 ```
