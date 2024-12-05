@@ -1,0 +1,70 @@
+version: "3.3"
+
+services:
+  php-fpm-8:
+    image: php:8.1-fpm-alpine
+    container_name: php-fpm-8
+    ports:
+      - "9001:9000"
+    volumes:
+      - ~/webserver/www:/var/www/html
+    restart: unless-stopped
+    networks:
+      - webnet
+
+  php-fpm-7:
+    image: php:7.4-fpm-alpine
+    container_name: php-fpm-7
+    ports:
+      - "9002:9000"
+    volumes:
+      - ~/webserver/www:/var/www/html
+    restart: unless-stopped
+    networks:
+      - webnet
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ~/webserver/www:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    environment:
+      - USE_PHP:=${USE_PHP:-php-fpm-7} # default ke php-fpm-7 jika variabel tidak ada 
+    depends_on:
+      - php-fpm-7
+      - php-fpm-8
+    restart: unless-stopped
+    networks:
+      - webnet
+
+  mysql:
+    image: arm64v8/mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ~/webserver/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    networks:
+      - webnet
+
+  phpmyadmin:
+    image: arm64v8/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - webnet
+
+networks:
+  webnet:
