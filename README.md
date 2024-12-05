@@ -3,6 +3,8 @@ Lightweight Web Server (Linux, Nginx, MySQL, dan PHP) with Docker
 - STB Device
   ( Support: Linux - ARM 64 bit )
 - Auto Switch PHP Version (Bash Menu)
+  a. Stop/Start & Build Container
+  b. Create Directory Web - Data
 - Container Service:
   1. PHP 7/8
   2. Nginx (Alpine OS)
