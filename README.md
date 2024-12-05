@@ -1,7 +1,13 @@
 # LEMP - ARM64
-Web Server (Linux, Nginx, MySQL, dan PHP) 
-- STB Device ( Linux - ARM 64 bit )
-- Auto Switch PHP Version
+Lightweight Web Server (Linux, Nginx, MySQL, dan PHP) with Docker
+- STB Device
+  ( Support: Linux - ARM 64 bit )
+- Auto Switch PHP Version (Bash Menu)
+- Container Service:
+  1. PHP 7/8
+  2. Nginx (Alpine OS)
+  3. MySQL 8.0
+  4. PHPMyAdmin
 
 INSTALLATION
 ```
